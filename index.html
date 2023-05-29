@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>picGallary</title>
+</head>
+
+<body>
+    <div id="main">
+        <img src="p1.jfif" id="main-img" width="400" height="300">
+    </div>
+
+    <label for="choose">画像ファイルをアップロードしてください</label>
+    <br>
+    <input type="file" id="choose">
+
+    <div id="sub">
+
+    </div>
+
+    <script>
+        let pics = ['p1.jfif', 'p2.jfif', 'p3.jfif', 'p4.jfif',];
+        let subDiv = document.getElementById('sub');
+        window.onload = function () {
+            for (let pic of pics) {
+                let subPic = document.createElement('img');
+                subPic.src = pic;
+                subPic.width = 200;
+                subPic.height = 200
+                subPic.onmouseover = function () {
+                    document.querySelector('#main img').src = pic;
+                }
+                subDiv.appendChild(subPic);
+            }
+
+            document.querySelector('#choose').addEventListener('change', (file) => {
+                console.log(file);
+                let newImg = document.createElement('img');
+                console.log(file.target.files[0].name);
+
+                newImg.src = file.target.files[0].name;
+                newImg.width = 200;
+                newImg.height = 200;
+                newImg.onmouseover = function () {
+                    document.querySelector('#main img').src = newImg.src;
+                }
+                subDiv.appendChild(newImg);
+            })
+        }
+
+    </script>
+</body>
+
+</html>

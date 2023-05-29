@@ -35,11 +35,14 @@
             }
 
             document.querySelector('#choose').addEventListener('change', (file) => {
-                console.log(file);
+                console.log(file.target.files);
                 let newImg = document.createElement('img');
-                console.log(file.target.files[0].name);
+                console.log(file.target.files[0]);
 
-                newImg.src = file.target.files[0].name;
+                const fReader = new FileReader();
+
+                fReader.onload = (event) => {
+                newImg.src = event.target.result;}
                 newImg.width = 200;
                 newImg.height = 200;
                 newImg.onmouseover = function () {

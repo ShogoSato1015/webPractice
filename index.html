@@ -43,6 +43,7 @@
 
                 fReader.onload = (event) => {
                 newImg.src = event.target.result;}
+                fReader.readAsBinaryString(File.target.files[0]);
                 newImg.width = 200;
                 newImg.height = 200;
                 newImg.onmouseover = function () {
